@@ -1,0 +1,9 @@
+{
+  "login": "pavel",
+  "password": "cvdYP78a",
+  "default_ip": "10.90.90.90",
+  "reset_delay": 180,
+  "after_reset": 60,
+  "default_gw": "172.17.17.254",
+  "vlan_mgmt": "MGMT"
+}

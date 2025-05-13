@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.netonline</groupId>
+    <artifactId>SwitchConfig</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>SwitchConfig</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <junit.version>5.10.2</junit.version>
+        <java.version>17</java.version>
+        <javafx.version>17.0.6</javafx.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.15.2</version>
+        </dependency>
+        <!-- ini4j
+        <dependency>
+            <groupId>org.ini4j</groupId>
+            <artifactId>ini4j</artifactId>
+            <version>0.5.4</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/ini4j-0.5.4.jar</systemPath>
+        </dependency>-->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <source>16</source>
+                    <target>16</target>
+                    <release>15</release>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.4.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/libs</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+           <!-- <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <executions>
+                    <execution>
+                        <id>default-cli</id>
+                        <configuration>
+                            <mainClass>com.netonline.switchconfig/com.netonline.switchconfig.MainApp
+                            </mainClass>
+                            <launcher>
+                                ${project.artifactId}
+                            </launcher>
+                            <win-icon>src/main/resources/icons/app-icon.ico</win-icon>
+                            <output>${project.build.directory}/jlink</output>
+                            <strip-debug>true</strip-debug>
+                            <compress>2</compress>
+                            <no-header-files>true</no-header-files>
+                            <no-man-pages>true</no-man-pages>
+                            <bind-services>false</bind-services>
+                            <add-modules>ALL-MODULE-PATH</add-modules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>-->
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <executions>
+                    <execution>
+                        <id>default-cli</id>
+                        <phase>package</phase>
+                        <configuration>
+                            <mainClass>com.netonline.switchconfig/com.netonline.switchconfig.MainApp</mainClass> <!-- Укажите ваш главный класс -->
+                            <launcher>${project.artifactId}</launcher>
+                            <win-icon>src/main/resources/icons/app-icon.ico</win-icon> <!-- Укажите путь к иконке -->
+                            <output>${project.build.directory}/jlink</output>
+                            <strip-debug>true</strip-debug>
+                            <compress>2</compress>
+                            <no-header-files>true</no-header-files>
+                            <no-man-pages>true</no-man-pages>
+                            <bind-services>false</bind-services>
+                            <add-modules>ALL-MODULE-PATH</add-modules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>

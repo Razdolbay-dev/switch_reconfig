@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.collections.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.collections.FXCollections?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="653.0" prefWidth="896.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.netonline.switchconfig.MainController">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <bottom>
+        <TableView fx:id="configTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" />
+                <TableColumn fx:id="hostColumn" text="Host" />
+                <TableColumn fx:id="ipColumn" text="IP" />
+                <TableColumn fx:id="switchColumn" text="Switch" />
+                <TableColumn fx:id="snmpColumn" text="SNMP" />
+                <TableColumn fx:id="uplinkColumn" text="UpLink" />
+                <TableColumn fx:id="switchState" text="Default" />
+            </columns>
+        </TableView>
+    </bottom>
+    <left>
+        <VBox prefHeight="428.0" prefWidth="158.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label prefHeight="17.0" prefWidth="120.0" text="Тип Свитча" />
+                <ChoiceBox fx:id="deviceChoiceBox" layoutX="10" layoutY="10" prefHeight="25.0" prefWidth="163.0" />
+            <CheckBox fx:id="deviceState" mnemonicParsing="false" text="Коммутатор новый??">
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </CheckBox>
+                <Label prefHeight="17.0" prefWidth="216.0" text="IP" />
+                <TextField fx:id="ipTextField" promptText="172.17.17.xxx" />
+                <Label prefHeight="17.0" prefWidth="214.0" text="SNMP" />
+                <TextField fx:id="snmpTextField" promptText="Введите SNMP System Name" />
+                <Label prefHeight="17.0" prefWidth="214.0" text="Uplink? (например, 25-26)" />
+                <TextField fx:id="uplinkTextField" promptText="Введите uplink ports (например, 25-26)" text="26" />
+                <Label prefHeight="17.0" prefWidth="102.0" />
+                <HBox prefHeight="21.0" prefWidth="212.0">
+                    <children>
+<!--                        <Button mnemonicParsing="false" onAction="#generateConfig" text="Генерация">-->
+<!--                     <HBox.margin>-->
+<!--                        <Insets left="5.0" />-->
+<!--                     </HBox.margin></Button>-->
+
+                        <Button mnemonicParsing="false" onAction="#addConfigToTable" text="Добавить">
+                            <HBox.margin>
+                                <Insets left="5.0" />
+                            </HBox.margin></Button>
+                        <Button fx:id="startButton" mnemonicParsing="false" text="Запустить">
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <GridPane BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <TextArea fx:id="configTextArea" prefHeight="428.0" prefWidth="329.0" />
+                <TextArea fx:id="textAreaPingStatic" prefHeight="428.0" prefWidth="335.0" GridPane.columnIndex="1" />
+                <TextArea fx:id="textAreaPingDynamic" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" />
+            </children>
+        </GridPane>
+    </center>
+</BorderPane>
